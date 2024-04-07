@@ -11,7 +11,7 @@ abstract class IConfig {
 
 @Environment(Env.development)
 @Singleton(as: IConfig)
-class DevConfig extends IConfig {
+class DevConfig implements IConfig {
   @override
   String get baseUrl => BaseURI.baseUrl;
 
@@ -21,7 +21,7 @@ class DevConfig extends IConfig {
 
 @Environment(Env.staging)
 @Singleton(as: IConfig)
-class StagingConfig extends IConfig {
+class StagingConfig implements IConfig {
   @override
   String get baseUrl => BaseURI.stagingBaseUrl;
 
@@ -31,7 +31,7 @@ class StagingConfig extends IConfig {
 
 @Environment(Env.production)
 @Singleton(as: IConfig)
-class ProdConfig extends IConfig {
+class ProdConfig implements IConfig {
   @override
   String get baseUrl => BaseURI.prodBaseUrl;
 

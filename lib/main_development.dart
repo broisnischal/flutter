@@ -3,9 +3,11 @@ import 'package:fullfluttersetup/app/app.dart';
 import 'package:fullfluttersetup/bootstrap.dart';
 import 'package:fullfluttersetup/di/injection_config.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+//  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+//   FlutterNativeSplash.remove();
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
@@ -14,5 +16,5 @@ void main() {
 
   configureDependencies(Env.development);
 
-  bootstrap(() => const App());
+  await bootstrap(App.new);
 }

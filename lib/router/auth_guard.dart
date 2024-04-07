@@ -1,29 +1,25 @@
-import 'package:auto_route/auto_route.dart';
+// import 'dart:developer';
 
-class AuthGuard extends AutoRouteGuard {
-  @override
-  Future<void> onNavigation(
-    NavigationResolver resolver,
-    StackRouter router,
-  ) async {
-    // Check if the user is authenticated
-    // final isAuthenticated = await UserRepository.isAuthenticated();
+// import 'package:auto_route/auto_route.dart';
+// import 'package:fullfluttersetup/router/route_imports.gr.dart';
 
-    const isAuthenticated = true;
+// class AuthGuard extends AutoRouteGuard {
+//   @override
+//   Future<void> onNavigation(
+//     NavigationResolver resolver,
+//     StackRouter router,
+//   ) async {
+//     // Check if the user is authenticated
+//     // final isAuthenticated = await UserRepository.isAuthenticated();
 
-    print(isAuthenticated);
-    print('tesitn');
+//     const isAuthenticated = false;
 
-    // If not authenticated, navigate to the login screen
-    if (!isAuthenticated) {
-      router.pushNamed('/login');
-    }
+//     if (isAuthenticated) {
+//       resolver.next(true);
+//     } else {
+//       resolver.redirect(const LoginRoute());
+//     }
 
-    // If authenticated, allow navigation
-    if (isAuthenticated) {
-      resolver.next();
-    }
-
-    // Else, allow navigation
-  }
-}
+//     // If the user is not authenticated, navigate to the login screen
+//   }
+// }

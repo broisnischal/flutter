@@ -1,16 +1,14 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fullfluttersetup/core/themes/darktheme.dart';
-import 'package:fullfluttersetup/core/themes/lighttheme.dart';
 import 'package:fullfluttersetup/l10n/l10n.dart';
-import 'package:fullfluttersetup/router/notifiers.dart';
-import 'package:fullfluttersetup/router/route_imports.dart';
+import 'package:fullfluttersetup/router/router.dart';
 
 // final navigatorKey s= GlobalKey<NavigatorState>();
 
 class App extends StatelessWidget {
-  const App({super.key});
+  App({super.key});
+
+  final appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +19,16 @@ class App extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          darkTheme: darkTheme,
-          theme: lightTheme,
-          scrollBehavior: ScrollConfiguration.of(context).copyWith(
-            multitouchDragStrategy: MultitouchDragStrategy.sumAllPointers,
-            // platform: TargetPlatform.iOS,
-            // scrollbars: false
-          ),
+          // darkTheme: darkTheme,
+          // theme: lightTheme,
+          // scrollBehavior: ScrollConfiguration.of(context).copyWith(
+          //   multitouchDragStrategy: MultitouchDragStrategy.sumAllPointers,
+          //   // platform: TargetPlatform.iOS,
+          //   // scrollbars: false
+          // ),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          routerConfig: AppRouter().config(
-            deepLinkBuilder: (deepLink) => deepLink,
-            reevaluateListenable: AuthProvider(),
-          ),
+          routerConfig: appRouter.config(),
         );
       },
     );

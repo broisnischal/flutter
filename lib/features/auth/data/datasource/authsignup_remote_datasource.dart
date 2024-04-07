@@ -4,12 +4,14 @@ import 'package:fullfluttersetup/core/constants/apiconstant.dart';
 import 'package:fullfluttersetup/core/errors/base_exception.dart';
 import 'package:fullfluttersetup/core/errors/exception.dart';
 import 'package:fullfluttersetup/features/auth/data/models/otp_response_model.dart';
+import 'package:injectable/injectable.dart';
 
-abstract interface class AuthSignUpRemoteDataSource {
+abstract interface class AuthRemoteDataSource {
   Future<APIResponse<OTPResponseModel>> signUp(String phoneNumber);
 }
 
-class AuthSignUpRemoteDataSourceImpl implements AuthSignUpRemoteDataSource {
+@LazySingleton(as: AuthRemoteDataSource)
+class AuthSignUpRemoteDataSourceImpl implements AuthRemoteDataSource {
   AuthSignUpRemoteDataSourceImpl({required this.dio});
   final Dio dio;
 
