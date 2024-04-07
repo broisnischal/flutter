@@ -4,18 +4,15 @@ part of 'route_imports.dart';
   replaceInRouteName: 'Page,Route',
   // generateForDir: 'lib/router',
 )
-class AppRouter extends $AppRouter implements AutoRouteGuard {
+class AppRouter extends $AppRouter {
   @override
   RouteType get defaultRouteType => const RouteType.adaptive();
-
-  bool get isAuthenticated => false;
 
   @override
   List<AutoRoute> get routes => [
         CustomRoute(
           path: '/login',
           page: LoginRoute.page,
-          transitionsBuilder: TransitionsBuilders.slideTop,
         ),
         AutoRoute(page: SignUp.page),
         // RedirectRoute(path: '/', redirectTo: '/feed'),
@@ -33,6 +30,9 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
           path: '/',
           page: Admin.page,
           initial: true,
+          guards: [
+            AuthGuard(),
+          ],
           // meta: const {
           //   'role': 'admin', // or 'user'
           // },
@@ -41,11 +41,5 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
       ];
 
   @override
-  void onNavigation(NavigationResolver resolver, StackRouter router) {
-    if (isAuthenticated || resolver.route.name == LoginRoute.name) {
-      resolver.next();
-    } else {
-      router.pushNamed('/login');
-    }
-  }
+  void onNavigation(NavigationResolver resolver, StackRouter router) {}
 }

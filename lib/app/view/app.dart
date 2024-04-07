@@ -7,7 +7,7 @@ import 'package:fullfluttersetup/l10n/l10n.dart';
 import 'package:fullfluttersetup/router/notifiers.dart';
 import 'package:fullfluttersetup/router/route_imports.dart';
 
-final navigatorKey = GlobalKey<NavigatorState>();
+// final navigatorKey s= GlobalKey<NavigatorState>();
 
 class App extends StatelessWidget {
   const App({super.key});
