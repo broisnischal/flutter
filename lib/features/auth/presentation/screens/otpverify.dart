@@ -1,11 +1,12 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fullfluttersetup/core/storage/flutter_secure_storage.dart';
+import 'package:fullfluttersetup/core/utils/snack_bar.dart';
 import 'package:fullfluttersetup/di/injection_config.dart';
 import 'package:fullfluttersetup/features/auth/presentation/bloc/auth/auth_bloc.dart';
+import 'package:fullfluttersetup/router/router.gr.dart';
 import 'package:pinput/pinput.dart';
 
 @RoutePage(name: 'otpverify')
@@ -33,13 +34,25 @@ class OtpVerify extends StatelessWidget {
               return BlocConsumer<AuthBloc, AuthState>(
                 listener: (context, state) {
                   if (state is AuthError) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(state.message)),
+                    showSnackBar(
+                      context: context,
+                      title: 'OTP Error',
+                      content: state.message,
                     );
                   }
 
                   if (state is AuthSuccessWithToken) {
-                    log(state.tokenResponse.accessToken);
+                    FlutterSecure.write(
+                      key: 'accessToken',
+                      value: state.tokenResponse.accessToken,
+                    );
+
+                    FlutterSecure.write(
+                      key: 'refreshToken',
+                      value: state.tokenResponse.refreshToken,
+                    );
+
+                    AutoRouter.of(context).push(const HomePage());
                   }
                 },
                 builder: (context, state) {

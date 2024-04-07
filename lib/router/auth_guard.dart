@@ -1,25 +1,34 @@
-// import 'dart:developer';
+import 'dart:developer';
 
-// import 'package:auto_route/auto_route.dart';
-// import 'package:fullfluttersetup/router/route_imports.gr.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:fullfluttersetup/core/storage/flutter_secure_storage.dart';
+import 'package:fullfluttersetup/router/router.gr.dart';
 
-// class AuthGuard extends AutoRouteGuard {
-//   @override
-//   Future<void> onNavigation(
-//     NavigationResolver resolver,
-//     StackRouter router,
-//   ) async {
-//     // Check if the user is authenticated
-//     // final isAuthenticated = await UserRepository.isAuthenticated();
+class AuthGuard extends AutoRouteGuard {
+  @override
+  Future<void> onNavigation(
+    NavigationResolver resolver,
+    StackRouter router,
+  ) async {
+    // final accessToken = await FlutterSecure.read('accessToken');
+    // log(accessToken!); // next time verify to the repository token and only use
 
-//     const isAuthenticated = false;
+    final isAuthenticated = await FlutterSecure.read('accessToken') != null;
+    log(isAuthenticated.toString());
 
-//     if (isAuthenticated) {
-//       resolver.next(true);
-//     } else {
-//       resolver.redirect(const LoginRoute());
-//     }
+    if (!isAuthenticated) {
+      // resolver.redirect(const SignUp());
+      // router.push(const SignUp());
+    }
 
-//     // If the user is not authenticated, navigate to the login screen
-//   }
-// }
+    resolver.next();
+
+    // if (isAuthenticated && resolver.routeName != 'SignUp') {
+    //   resolver.next();
+    // } else if (isAuthenticated && resolver.routeName == 'SignUp') {
+    //   resolver.redirect(const HomePage());
+    // } else {
+    //   resolver.redirect(const SignUp());
+    // }
+  }
+}
