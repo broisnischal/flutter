@@ -1,5 +1,5 @@
-class OtpResponseEntity {
-  OtpResponseEntity({
+class OTPEntity {
+  OTPEntity({
     required this.hash,
     required this.otp,
     required this.phone,

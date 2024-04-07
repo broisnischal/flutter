@@ -12,3 +12,14 @@ final class AuthSignUp extends AuthEvent {
   const AuthSignUp(this.contact);
   final String contact;
 }
+
+final class OTPVerify extends AuthEvent {
+  const OTPVerify({
+    required this.otp,
+    required this.hash,
+    required this.phoneNumber,
+  });
+  final String otp;
+  final String hash;
+  final String phoneNumber;
+}

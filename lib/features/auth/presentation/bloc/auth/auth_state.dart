@@ -16,5 +16,10 @@ final class AuthSuccess extends AuthState {}
 
 final class AuthSuccessWithOtp extends AuthState {
   AuthSuccessWithOtp({required this.otp});
-  final OtpResponseEntity otp;
+  final OTPEntity otp;
+}
+
+final class AuthSuccessWithToken extends AuthState {
+  AuthSuccessWithToken({required this.tokenResponse});
+  final TokenResponse tokenResponse;
 }

@@ -6,15 +6,13 @@ part of 'otp_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-OTPResponseModel _$OTPResponseModelFromJson(Map<String, dynamic> json) =>
-    OTPResponseModel(
+OTPModel _$OTPModelFromJson(Map<String, dynamic> json) => OTPModel(
       hash: json['hash'] as String,
       otp: json['otp'] as String,
       phone: json['phone'] as String,
     );
 
-Map<String, dynamic> _$OTPResponseModelToJson(OTPResponseModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$OTPModelToJson(OTPModel instance) => <String, dynamic>{
       'hash': instance.hash,
       'otp': instance.otp,
       'phone': instance.phone,

@@ -16,15 +16,16 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
     as _i4;
 
 import '../core/dio/iconfig.dart' as _i5;
-import '../core/dio/third_party.dart' as _i14;
+import '../core/dio/third_party.dart' as _i15;
 import '../features/auth/data/datasource/authsignup_remote_datasource.dart'
     as _i7;
 import '../features/auth/data/repositories/auth_repository_impl.dart' as _i9;
 import '../features/auth/domain/repository/auth_repository.dart' as _i8;
 import '../features/auth/domain/usecase/auth_signup.dart' as _i10;
-import '../features/auth/presentation/bloc/auth/auth_bloc.dart' as _i11;
-import 'network_info_di.dart' as _i13;
-import 'secure_storage_di.dart' as _i12;
+import '../features/auth/domain/usecase/otp_verify.dart' as _i11;
+import '../features/auth/presentation/bloc/auth/auth_bloc.dart' as _i12;
+import 'network_info_di.dart' as _i14;
+import 'secure_storage_di.dart' as _i13;
 
 const String _staging = 'staging';
 const String _production = 'production';
@@ -66,13 +67,17 @@ _i1.GetIt $initGetIt(
       authRemoteDataSource: gh<_i7.AuthRemoteDataSource>()));
   gh.factory<_i10.AuthSignUpUseCase>(
       () => _i10.AuthSignUpUseCase(gh<_i8.AuthRepository>()));
-  gh.factory<_i11.AuthBloc>(
-      () => _i11.AuthBloc(authSignUp: gh<_i10.AuthSignUpUseCase>()));
+  gh.factory<_i11.OTPVerifyUseCase>(
+      () => _i11.OTPVerifyUseCase(gh<_i8.AuthRepository>()));
+  gh.factory<_i12.AuthBloc>(() => _i12.AuthBloc(
+        authSignUp: gh<_i10.AuthSignUpUseCase>(),
+        otpVerify: gh<_i11.OTPVerifyUseCase>(),
+      ));
   return getIt;
 }
 
-class _$SecureStorageInjection extends _i12.SecureStorageInjection {}
+class _$SecureStorageInjection extends _i13.SecureStorageInjection {}
 
-class _$NetworkInfoInjection extends _i13.NetworkInfoInjection {}
+class _$NetworkInfoInjection extends _i14.NetworkInfoInjection {}
 
-class _$DioBase extends _i14.DioBase {}
+class _$DioBase extends _i15.DioBase {}

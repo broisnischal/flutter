@@ -4,15 +4,15 @@ import 'package:fullfluttersetup/features/auth/domain/entity/otp_response.dart';
 part 'otp_response_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class OTPResponseModel extends OtpResponseEntity {
-  OTPResponseModel({
+class OTPModel extends OTPEntity {
+  OTPModel({
     required super.hash,
     required super.otp,
     required super.phone,
   });
 
-  factory OTPResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$OTPResponseModelFromJson(json);
+  factory OTPModel.fromJson(Map<String, dynamic> json) =>
+      _$OTPModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$OTPResponseModelToJson(this);
+  Map<String, dynamic> toJson() => _$OTPModelToJson(this);
 }
