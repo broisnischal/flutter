@@ -12,13 +12,13 @@ class ServerException extends Equatable implements Exception {
 
 class BaseException extends Failure implements Exception {
   BaseException(super.message, {required this.baseException});
-  final BaseExceptionEntity baseException;
+  final BaseErrorEntity baseException;
 }
 
 class NetworkException extends BaseException {
   NetworkException(super.message)
       : super(
-          baseException: BaseExceptionEntity(
+          baseException: BaseErrorEntity(
             message: 'No Internet Connection',
             success: false,
           ),
@@ -87,5 +87,5 @@ class TooManyRequestsException implements Exception {
 
 class SignInException implements Exception {
   SignInException({required this.signInError});
-  final BaseExceptionEntity signInError;
+  final BaseErrorEntity signInError;
 }

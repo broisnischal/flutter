@@ -1,10 +1,10 @@
-class BaseExceptionEntity {
-  BaseExceptionEntity({
-    this.success,
+class BaseErrorEntity {
+  BaseErrorEntity({
+    required this.success,
     this.stackTrace,
-    this.message,
+    required this.message,
   });
-  final bool? success;
+  final bool success;
   String? stackTrace;
-  String? message;
+  final String message;
 }
