@@ -21,7 +21,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }) async {
     try {
       final res = await authRemoteDataSource.signUp(phoneNumber);
-      return Right(res.data! as OTPEntity);
+      return Right(res.data ?? '' as OTPEntity);
     } on DioException catch (e) {
       final error = BaseErrorEntity(
         message: e.response?.data['message'] as String,

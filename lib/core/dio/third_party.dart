@@ -16,22 +16,23 @@ abstract class DioBase {
             'Accept': 'application/json',
           },
         ),
-      )..interceptors.add(
-          InterceptorsWrapper(
-            onRequest: (options, handler) async {
-              final userToken = await getToken();
-              options.headers['Authorization'] = 'Bearer $userToken';
-              handler.next(options);
-            },
-            onResponse: (response, requestionProvider) async {
-              debugPrint(response.data.toString());
-              requestionProvider.next(response);
-            },
-            onError: (error, errorInterceptionHanlder) async {
-              errorInterceptionHanlder.next(error);
-            },
-          ),
-        );
+      );
+  // ..interceptors.add(
+  //     InterceptorsWrapper(
+  //       onRequest: (options, handler) async {
+  //         final userToken = await getToken();
+  //         options.headers['Authorization'] = 'Bearer $userToken';
+  //         handler.next(options);
+  //       },
+  //       onResponse: (response, requestionProvider) async {
+  //         debugPrint(response.data.toString());
+  //         requestionProvider.next(response);
+  //       },
+  //       onError: (error, errorInterceptionHanlder) async {
+  //         errorInterceptionHanlder.next(error);
+  //       },
+  //     ),
+  //   )
 }
 
 Future<String> getToken() async {

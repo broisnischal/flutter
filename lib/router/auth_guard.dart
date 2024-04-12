@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:fullfluttersetup/core/storage/flutter_secure_storage.dart';
-import 'package:fullfluttersetup/router/router.gr.dart';
 
 class AuthGuard extends AutoRouteGuard {
   @override

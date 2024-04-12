@@ -14,12 +14,13 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: IntroductionPage.page,
         ),
-        AutoRoute(page: SignUp.page, path: '/signup', initial: true),
+        AutoRoute(
+          page: SignUp.page,
+          path: '/signup',
+        ),
 
         AutoRoute(page: Otpverify.page),
-        AutoRoute(
-          page: HomePage.page,
-        ),
+        AutoRoute(page: HomePage.page, initial: true),
         // AutoRoute(
         //   page: SignUp.route,
         // ),
