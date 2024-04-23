@@ -241,38 +241,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.18.0"
-  connectivity:
-    dependency: transitive
-    description:
-      name: connectivity
-      sha256: a8e91263cf3e25fb5cc95e19dfde4999e32a648ac3b9e8a558a28165731678f8
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.6"
-  connectivity_for_web:
-    dependency: transitive
-    description:
-      name: connectivity_for_web
-      sha256: "01a390c1d5adc2ed1fa1f52d120c07fe9fd01166a93f965a832fd6cfc0ea6482"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.0+1"
-  connectivity_macos:
-    dependency: transitive
-    description:
-      name: connectivity_macos
-      sha256: "51ae08d5162eca9669b9d8951ed83ce19c5355a81149f94e4dee2740beb93628"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.1+2"
-  connectivity_platform_interface:
-    dependency: transitive
-    description:
-      name: connectivity_platform_interface
-      sha256: "2d82e942df9d49f29a24bb07fb5ce085d4a53e47818c62364d2b6deb9e0d7a8e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
   connectivity_plus:
     dependency: "direct main"
     description:
@@ -486,6 +454,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.0"
+  flutter_hooks:
+    dependency: transitive
+    description:
+      name: flutter_hooks
+      sha256: "6a126f703b89499818d73305e4ce1e3de33b4ae1c5512e3b8eab4b986f46774c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.6"
   flutter_keyboard_visibility:
     dependency: transitive
     description:
@@ -697,74 +673,74 @@ packages:
     dependency: transitive
     description:
       name: gql
-      sha256: "60e808fb52bcb3e79a8f7f1078a518413fbb5991da27371f3719513ac0646043"
+      sha256: "998304fbb88a3956cfea10cd27a56f8e5d4b3bc110f03c952c18a9310774e8bb"
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.1"
+    version: "0.14.0"
   gql_dedupe_link:
     dependency: transitive
     description:
       name: gql_dedupe_link
-      sha256: b23e16b6c8bdd06a4c5d4c9c4f924333458937aa7992bcbf3d58dd28bae5d64d
+      sha256: "89681048cf956348e865da872a40081499b8c087fc84dd4d4b9c134bd70d27b3"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.3+1"
   gql_error_link:
     dependency: transitive
     description:
       name: gql_error_link
-      sha256: c7566dc4b2f53046383b31e7f30e086f54d713795dccab0ec861387e763b4eb7
+      sha256: e7bfdd2b6232f3e15861cd96c2ad6b7c9c94693843b3dea18295136a5fb5b534
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.2.3+1"
   gql_exec:
     dependency: transitive
     description:
       name: gql_exec
-      sha256: f2540cf9b8e02983be4b18c562960e0cb0bd8584bbc01d0b85f4010d55696125
+      sha256: "0d1fdb2e4154efbfc1dcf3f35ec36d19c8428ff0d560eb4c45b354f8f871dc50"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0"
+    version: "0.4.3"
   gql_http_link:
     dependency: transitive
     description:
       name: gql_http_link
-      sha256: "8d9b38716d3ba3486da5ae7b5d59365ca4874ba541a2a1e4019414acafbf1a80"
+      sha256: "89ef87b32947acf4189f564c095f1148b0ab9bb9996fe518716dbad66708b834"
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.0"
+    version: "0.4.5"
   gql_link:
     dependency: transitive
     description:
       name: gql_link
-      sha256: "1813f748f46cc6f12573ac6d0f3a74bd7c073a8047928df5a743ac94e06a486f"
+      sha256: f7973279126bc922d465c4f4da6ed93d187085e597b3480f5e14e74d28fe14bd
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.0"
+    version: "0.5.1"
   gql_transform_link:
     dependency: transitive
     description:
       name: gql_transform_link
-      sha256: "26cc11e55ff6591fac1ee7d1f1f6849a3d9ccac99e3c16f787f2c04bf6f7cf24"
+      sha256: b1735a9a92d25a92960002a8b40dfaede95ec1e5ed848906125d69efd878661f
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.2.2+1"
   graphql:
     dependency: transitive
     description:
       name: graphql
-      sha256: ffa2414521d3a04b7d5a03f46919f33d3644eae77137c0a105fe7455b92815e4
+      sha256: bda5b794345087ccbd16942045be8091e2ac4619285bb22e73555d5fd88c4043
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.1"
+    version: "5.2.0-beta.1"
   graphql_flutter:
     dependency: "direct main"
     description:
       name: graphql_flutter
-      sha256: "00ce62b63564b8a57fcad70ef062d901478a75c3fdf552ce661e93aebef92405"
+      sha256: "06059ac9e8417c71582f05e28a59b1416d43959d34a6a0d9565341e3a362e117"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0-nullsafety.5"
+    version: "5.1.2"
   graphs:
     dependency: transitive
     description:
@@ -1065,10 +1041,10 @@ packages:
     dependency: transitive
     description:
       name: normalize
-      sha256: "7d9b3cf6cc2366a858ca0b75c9f1a99d9dd69ac5aa7dbda01f0cf800a26687b2"
+      sha256: "8a60e37de5b608eeaf9b839273370c71ebba445e9f73b08eee7725e0d92dbc43"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.0+1"
+    version: "0.8.2+1"
   octo_image:
     dependency: transitive
     description:
