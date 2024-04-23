@@ -26,7 +26,10 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: PostPageRoute.page,
         ),
-        AutoRoute(page: TimerPageRoute.page, initial: true),
+        AutoRoute(
+          page: TimerPageRoute.page,
+        ),
+        AutoRoute(page: StepperPageRoute.page, initial: true),
         // AutoRoute(
         //   page: SignUp.route,
         // ),

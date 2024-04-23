@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 
 void showSnackBar({
   required BuildContext context,
@@ -10,6 +11,12 @@ void showSnackBar({
     ..showSnackBar(
       SnackBar(
         showCloseIcon: true,
+        // action: SnackBarAction(
+        //   label: 'X',
+        //   onPressed: () {
+        //     ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        //   },
+        // ),
         content: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -39,7 +46,9 @@ void showSnackBar({
         hitTestBehavior: HitTestBehavior.translucent,
         behavior: SnackBarBehavior.floating,
         margin: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height * 0.82,
+          bottom: (MediaQuery.of(context).size.height -
+                  MediaQuery.of(context).viewInsets.bottom) *
+              0.75,
           right: 24,
           left: 24,
         ),

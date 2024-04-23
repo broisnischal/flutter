@@ -8,8 +8,8 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:flutter/material.dart' as _i8;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 import 'package:fullfluttersetup/features/auth/presentation/screens/otpverify.dart'
     as _i3;
 import 'package:fullfluttersetup/features/auth/presentation/screens/signup.dart'
@@ -20,29 +20,31 @@ import 'package:fullfluttersetup/features/introduction_screen/presentation/scree
     as _i2;
 import 'package:fullfluttersetup/features/profile/presentation/screens/homepage.dart'
     as _i1;
-import 'package:fullfluttersetup/features/timer/presentation/screens/timer_page.dart'
+import 'package:fullfluttersetup/features/timer/presentation/screens/stepper_page.dart'
     as _i6;
+import 'package:fullfluttersetup/features/timer/presentation/screens/timer_page.dart'
+    as _i7;
 
-abstract class $AppRouter extends _i7.RootStackRouter {
+abstract class $AppRouter extends _i8.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i7.PageFactory> pagesMap = {
+  final Map<String, _i8.PageFactory> pagesMap = {
     HomePage.name: (routeData) {
-      return _i7.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.HomePage(),
       );
     },
     IntroductionPage.name: (routeData) {
-      return _i7.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i2.IntroductionPage(),
       );
     },
     Otpverify.name: (routeData) {
       final args = routeData.argsAs<OtpverifyArgs>();
-      return _i7.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i3.OtpVerify(
           otp: args.otp,
@@ -53,21 +55,27 @@ abstract class $AppRouter extends _i7.RootStackRouter {
       );
     },
     PostPageRoute.name: (routeData) {
-      return _i7.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i4.PostsPage(),
       );
     },
     SignUp.name: (routeData) {
-      return _i7.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i5.SignUp(),
       );
     },
-    TimerPageRoute.name: (routeData) {
-      return _i7.AutoRoutePage<dynamic>(
+    StepperPageRoute.name: (routeData) {
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.TimerPage(),
+        child: const _i6.StepperPage(),
+      );
+    },
+    TimerPageRoute.name: (routeData) {
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i7.TimerPage(),
       );
     },
   };
@@ -75,8 +83,8 @@ abstract class $AppRouter extends _i7.RootStackRouter {
 
 /// generated route for
 /// [_i1.HomePage]
-class HomePage extends _i7.PageRouteInfo<void> {
-  const HomePage({List<_i7.PageRouteInfo>? children})
+class HomePage extends _i8.PageRouteInfo<void> {
+  const HomePage({List<_i8.PageRouteInfo>? children})
       : super(
           HomePage.name,
           initialChildren: children,
@@ -84,13 +92,13 @@ class HomePage extends _i7.PageRouteInfo<void> {
 
   static const String name = 'HomePage';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.IntroductionPage]
-class IntroductionPage extends _i7.PageRouteInfo<void> {
-  const IntroductionPage({List<_i7.PageRouteInfo>? children})
+class IntroductionPage extends _i8.PageRouteInfo<void> {
+  const IntroductionPage({List<_i8.PageRouteInfo>? children})
       : super(
           IntroductionPage.name,
           initialChildren: children,
@@ -98,18 +106,18 @@ class IntroductionPage extends _i7.PageRouteInfo<void> {
 
   static const String name = 'IntroductionPage';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i3.OtpVerify]
-class Otpverify extends _i7.PageRouteInfo<OtpverifyArgs> {
+class Otpverify extends _i8.PageRouteInfo<OtpverifyArgs> {
   Otpverify({
     required String otp,
     required String phoneNumber,
     required String hash,
-    _i8.Key? key,
-    List<_i7.PageRouteInfo>? children,
+    _i9.Key? key,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
           Otpverify.name,
           args: OtpverifyArgs(
@@ -123,8 +131,8 @@ class Otpverify extends _i7.PageRouteInfo<OtpverifyArgs> {
 
   static const String name = 'Otpverify';
 
-  static const _i7.PageInfo<OtpverifyArgs> page =
-      _i7.PageInfo<OtpverifyArgs>(name);
+  static const _i8.PageInfo<OtpverifyArgs> page =
+      _i8.PageInfo<OtpverifyArgs>(name);
 }
 
 class OtpverifyArgs {
@@ -141,7 +149,7 @@ class OtpverifyArgs {
 
   final String hash;
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   @override
   String toString() {
@@ -151,8 +159,8 @@ class OtpverifyArgs {
 
 /// generated route for
 /// [_i4.PostsPage]
-class PostPageRoute extends _i7.PageRouteInfo<void> {
-  const PostPageRoute({List<_i7.PageRouteInfo>? children})
+class PostPageRoute extends _i8.PageRouteInfo<void> {
+  const PostPageRoute({List<_i8.PageRouteInfo>? children})
       : super(
           PostPageRoute.name,
           initialChildren: children,
@@ -160,13 +168,13 @@ class PostPageRoute extends _i7.PageRouteInfo<void> {
 
   static const String name = 'PostPageRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i5.SignUp]
-class SignUp extends _i7.PageRouteInfo<void> {
-  const SignUp({List<_i7.PageRouteInfo>? children})
+class SignUp extends _i8.PageRouteInfo<void> {
+  const SignUp({List<_i8.PageRouteInfo>? children})
       : super(
           SignUp.name,
           initialChildren: children,
@@ -174,13 +182,27 @@ class SignUp extends _i7.PageRouteInfo<void> {
 
   static const String name = 'SignUp';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i6.TimerPage]
-class TimerPageRoute extends _i7.PageRouteInfo<void> {
-  const TimerPageRoute({List<_i7.PageRouteInfo>? children})
+/// [_i6.StepperPage]
+class StepperPageRoute extends _i8.PageRouteInfo<void> {
+  const StepperPageRoute({List<_i8.PageRouteInfo>? children})
+      : super(
+          StepperPageRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'StepperPageRoute';
+
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i7.TimerPage]
+class TimerPageRoute extends _i8.PageRouteInfo<void> {
+  const TimerPageRoute({List<_i8.PageRouteInfo>? children})
       : super(
           TimerPageRoute.name,
           initialChildren: children,
@@ -188,5 +210,5 @@ class TimerPageRoute extends _i7.PageRouteInfo<void> {
 
   static const String name = 'TimerPageRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
