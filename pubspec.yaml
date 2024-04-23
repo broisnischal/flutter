@@ -54,7 +54,7 @@ dependencies:
   rxdart: ^0.27.7
   shared_preferences: ^2.2.2
   stream_transform: ^2.1.0
-  web_socket_channel: ^2.4.4
+  web_socket_channel: ^2.4.5
   # flutter_lints: ^3.0.1
   # flutter_native_splash: ^2.4.0
   # internet_connection_checker: ^1.0.0+1
