@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fullfluttersetup/core/utils/snack_bar.dart';
 
 @RoutePage(name: 'StepperPageRoute')
 class StepperPage extends StatefulWidget {
@@ -69,78 +70,45 @@ class _StepperPageState extends State<StepperPage> {
             physics: const ScrollPhysics(),
             key: const Key('stepper'),
             steps: getSteps(),
-            onStepTapped: (int step) => setState(() => currentStep = step),
+            onStepTapped: (int step) => {
+              if (currentStep > step) {setState(() => currentStep = step)},
+            },
             currentStep: currentStep,
             elevation: 0,
             onStepContinue: () {
               setState(() {
-                if (currentStep < getSteps().length - 1) {
-                  currentStep = currentStep + 1;
+                if (currentStep == 0) {
+                  if (nameController.text.isNotEmpty) {
+                    currentStep = currentStep + 1;
+                  } else {
+                    showSnackBar(
+                      context: context,
+                      title: 'Error',
+                      content: 'Please Select your delivery',
+                    );
+                  }
+                } else if (currentStep == 1) {
+                  if (formKey.currentState!.validate()) {
+                    currentStep = currentStep + 1;
+                  } else {}
                 } else {
-                  // last step
-                  // if (formKey.currentState!.validate()) {
-                  //   showSnackBar(
-                  //     context: context,
-                  //     title: 'Error',
-                  //     content: 'Please fill all the fields',
-                  //   );
-                  // }
-                  showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    showDragHandle: true,
-                    elevation: 0,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
-                      ),
-                    ),
-                    builder: (context) => IntrinsicHeight(
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).viewInsets.bottom,
-                        ),
-                        child: SingleChildScrollView(
-                          child: Expanded(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Wrap(
-                                  spacing: 10.w,
-                                  runSpacing: 10.h,
-                                  children: [
-                                    ...List.filled(21, const Text('data'))
-                                        .asMap()
-                                        .entries
-                                        .map(
-                                          (entry) => Container(
-                                            height: 100,
-                                            width: 100,
-                                            decoration: const BoxDecoration(
-                                              color: Colors.orange,
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'data ${entry.key}',
-                                              ), // Using entry.key as the index
-                                            ),
-                                          ),
-                                        ),
-                                  ],
-                                ),
-                                20.verticalSpace,
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-
-                  // context.router.maybePop();
+                  customButtomSheet(context);
                 }
+
+                // if (currentStep < getSteps().length - 1) {
+                //   currentStep = currentStep + 1;
+                // } else {
+                // last step
+                // if (formKey.currentState!.validate()) {
+                //   showSnackBar(
+                //     context: context,
+                //     title: 'Error',
+                //     content: 'Please fill all the fields',
+                //   );
+                // }
+
+                // context.router.maybePop();
+                // }
               });
             },
             onStepCancel: () {
@@ -251,4 +219,57 @@ class _StepperPageState extends State<StepperPage> {
         //   isActive: currentStep >= 3,
         // ),
       ];
+}
+
+Future<dynamic> customButtomSheet(BuildContext context) {
+  return showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    showDragHandle: true,
+    elevation: 0,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(15),
+        topRight: Radius.circular(15),
+      ),
+    ),
+    builder: (context) => IntrinsicHeight(
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: SingleChildScrollView(
+          child: Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Wrap(
+                  spacing: 10.w,
+                  runSpacing: 10.h,
+                  children: [
+                    ...List.filled(21, const Text('data')).asMap().entries.map(
+                          (entry) => Container(
+                            height: 100,
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              color: Colors.orange,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'data ${entry.key}',
+                              ), // Using entry.key as the index
+                            ),
+                          ),
+                        ),
+                  ],
+                ),
+                20.verticalSpace,
+              ],
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 }
