@@ -20,7 +20,13 @@ class AppRouter extends $AppRouter {
         ),
 
         AutoRoute(page: Otpverify.page),
-        AutoRoute(page: HomePage.page, initial: true),
+        AutoRoute(
+          page: HomePage.page,
+        ),
+        AutoRoute(
+          page: PostPageRoute.page,
+        ),
+        AutoRoute(page: TimerPageRoute.page, initial: true),
         // AutoRoute(
         //   page: SignUp.route,
         // ),

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fullfluttersetup/di/injection_config.dart';
 import 'package:fullfluttersetup/features/profile/presentation/bloc/home_bloc.dart';
+import 'package:fullfluttersetup/l10n/l10n.dart';
 
 @RoutePage(name: 'HomePage')
 class HomePage extends StatelessWidget {
@@ -13,6 +14,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       body: SafeArea(
         minimum: const EdgeInsets.all(16),
@@ -26,22 +29,24 @@ class HomePage extends StatelessWidget {
             // ),
             100.verticalSpace,
 
+            Text(l10n.tenantFamily),
+
             Text(
               'Calendar ',
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                for (var day in [
+                for (final day in [
                   'Sun',
                   'Mon',
                   'Tue',
                   'Wed',
                   'Thu',
                   'Fri',
-                  'Sat'
+                  'Sat',
                 ])
                   Text(day),
               ],
