@@ -31,6 +31,10 @@ void main() async {
 
   // await initializeService();
 
+  FlutterError.onError = (details) {
+    log(details.exceptionAsString(), stackTrace: details.stack);
+  };
+
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();

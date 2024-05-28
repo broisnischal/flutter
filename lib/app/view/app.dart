@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fullfluttersetup/l10n/l10n.dart';
 import 'package:fullfluttersetup/router/router.dart';
@@ -10,10 +9,10 @@ import 'package:fullfluttersetup/router/router.gr.dart';
 
 // final navigatorKey s= GlobalKey<NavigatorState>();
 
-class App extends StatelessWidget {
-  App({super.key});
+final appRouter = AppRouter();
 
-  final appRouter = AppRouter();
+class App extends StatelessWidget {
+  const App({super.key});
 
   // static Future<bool> permission() async =>
   //     await FlutterOverlayWindow.isPermissionGranted();
