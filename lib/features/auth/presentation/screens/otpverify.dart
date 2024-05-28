@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_nfc_kit/flutter_nfc_kit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fullfluttersetup/core/storage/flutter_secure_storage.dart';
 import 'package:fullfluttersetup/core/utils/snack_bar.dart';
@@ -8,6 +11,7 @@ import 'package:fullfluttersetup/di/injection_config.dart';
 import 'package:fullfluttersetup/features/auth/presentation/bloc/auth/auth_bloc.dart';
 import 'package:fullfluttersetup/router/router.gr.dart';
 import 'package:pinput/pinput.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage(name: 'otpverify')
 class OtpVerify extends StatelessWidget {
@@ -20,6 +24,11 @@ class OtpVerify extends StatelessWidget {
   final String phoneNumber;
   final String hash;
   final String otp;
+
+  Future<void> readNfc() async {
+    final tag = await FlutterNfcKit.poll();
+    log('Tag found: ${tag.applicationData}');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +61,7 @@ class OtpVerify extends StatelessWidget {
                       value: state.tokenResponse.refreshToken,
                     );
 
-                    AutoRouter.of(context).push(const HomePage());
+                    AutoRouter.of(context).push(const WebLoginRoute());
                   }
                 },
                 builder: (context, state) {
@@ -93,7 +102,7 @@ class OtpVerify extends StatelessWidget {
                             ),
                           ),
                         ),
-                        hapticFeedbackType: HapticFeedbackType.lightImpact,
+                        // hapticFeedbackType: HapticFeedbackType.lightImpact,
                         onCompleted: (value) {
                           BlocProvider.of<AuthBloc>(context).add(
                             OTPVerify(
@@ -104,7 +113,20 @@ class OtpVerify extends StatelessWidget {
                           );
                         },
                       ),
-                      // Text(otp),
+                      Text(otp),
+                      TextButton(
+                        onPressed: () => launchUrl(
+                          Uri.parse(
+                            'nischal://nischal.pages.dev/reset-password',
+                          ),
+                        ),
+                        child: Text(
+                          'Resend OTP link',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      ),
                     ],
                   );
                 },

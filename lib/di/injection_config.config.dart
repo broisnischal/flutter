@@ -8,31 +8,27 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:dio/dio.dart' as _i6;
+import 'package:dio/dio.dart' as _i5;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart'
-    as _i4;
 
-import '../core/dio/iconfig.dart' as _i5;
-import '../core/dio/third_party.dart' as _i20;
+import '../core/dio/iconfig.dart' as _i4;
+import '../core/dio/third_party.dart' as _i18;
 import '../features/auth/data/datasource/authsignup_remote_datasource.dart'
-    as _i8;
-import '../features/auth/data/repositories/auth_repository_impl.dart' as _i14;
-import '../features/auth/domain/repository/auth_repository.dart' as _i13;
-import '../features/auth/domain/usecase/auth_signup.dart' as _i15;
-import '../features/auth/domain/usecase/otp_verify.dart' as _i16;
-import '../features/auth/presentation/bloc/auth/auth_bloc.dart' as _i17;
-import '../features/profile/data/datasources/home_remote_datasources.dart'
     as _i7;
-import '../features/profile/data/repositories/home_repository_impl.dart'
-    as _i10;
-import '../features/profile/domain/repository/home_repository.dart' as _i9;
-import '../features/profile/domain/usecases/get_calendar.dart' as _i11;
-import '../features/profile/presentation/bloc/home_bloc.dart' as _i12;
-import 'network_info_di.dart' as _i19;
-import 'secure_storage_di.dart' as _i18;
+import '../features/auth/data/repositories/auth_repository_impl.dart' as _i13;
+import '../features/auth/domain/repository/auth_repository.dart' as _i12;
+import '../features/auth/domain/usecase/auth_signup.dart' as _i14;
+import '../features/auth/domain/usecase/otp_verify.dart' as _i15;
+import '../features/auth/presentation/bloc/auth/auth_bloc.dart' as _i16;
+import '../features/profile/data/datasources/home_remote_datasources.dart'
+    as _i6;
+import '../features/profile/data/repositories/home_repository_impl.dart' as _i9;
+import '../features/profile/domain/repository/home_repository.dart' as _i8;
+import '../features/profile/domain/usecases/get_calendar.dart' as _i10;
+import '../features/profile/presentation/bloc/home_bloc.dart' as _i11;
+import 'secure_storage_di.dart' as _i17;
 
 const String _staging = 'staging';
 const String _production = 'production';
@@ -50,49 +46,44 @@ _i1.GetIt $initGetIt(
     environmentFilter,
   );
   final secureStorageInjection = _$SecureStorageInjection();
-  final networkInfoInjection = _$NetworkInfoInjection();
   final dioBase = _$DioBase();
   gh.factory<_i3.FlutterSecureStorage>(() => secureStorageInjection.storage());
-  gh.factory<_i4.InternetConnectionCheckerPlus>(
-      () => networkInfoInjection.networkInfo);
-  gh.singleton<_i5.IConfig>(
-    () => _i5.StagingConfig(),
+  gh.singleton<_i4.IConfig>(
+    () => _i4.StagingConfig(),
     registerFor: {_staging},
   );
-  gh.singleton<_i5.IConfig>(
-    () => _i5.ProdConfig(),
+  gh.singleton<_i4.IConfig>(
+    () => _i4.ProdConfig(),
     registerFor: {_production},
   );
-  gh.singleton<_i5.IConfig>(
-    () => _i5.DevConfig(),
+  gh.singleton<_i4.IConfig>(
+    () => _i4.DevConfig(),
     registerFor: {_development},
   );
-  gh.lazySingleton<_i6.Dio>(() => dioBase.dio(gh<_i5.IConfig>()));
-  gh.lazySingleton<_i7.HomeRemoteDataSource>(
-      () => _i7.HomeRemoteDataSourceImpl(dio: gh<_i6.Dio>()));
-  gh.lazySingleton<_i8.AuthRemoteDataSource>(
-      () => _i8.AuthSignUpRemoteDataSourceImpl(dio: gh<_i6.Dio>()));
-  gh.lazySingleton<_i9.HomeRepository>(() => _i10.HomeRepositoryImpl(
-      homeRemoteDatasource: gh<_i7.HomeRemoteDataSource>()));
-  gh.factory<_i11.GetCalendar>(
-      () => _i11.GetCalendar(homeRepository: gh<_i9.HomeRepository>()));
-  gh.factory<_i12.HomeBloc>(
-      () => _i12.HomeBloc(getCalendar: gh<_i11.GetCalendar>()));
-  gh.lazySingleton<_i13.AuthRepository>(() => _i14.AuthRepositoryImpl(
-      authRemoteDataSource: gh<_i8.AuthRemoteDataSource>()));
-  gh.factory<_i15.AuthSignUpUseCase>(
-      () => _i15.AuthSignUpUseCase(gh<_i13.AuthRepository>()));
-  gh.factory<_i16.OTPVerifyUseCase>(
-      () => _i16.OTPVerifyUseCase(gh<_i13.AuthRepository>()));
-  gh.factory<_i17.AuthBloc>(() => _i17.AuthBloc(
-        authSignUp: gh<_i15.AuthSignUpUseCase>(),
-        otpVerify: gh<_i16.OTPVerifyUseCase>(),
+  gh.lazySingleton<_i5.Dio>(() => dioBase.dio(gh<_i4.IConfig>()));
+  gh.lazySingleton<_i6.HomeRemoteDataSource>(
+      () => _i6.HomeRemoteDataSourceImpl(dio: gh<_i5.Dio>()));
+  gh.lazySingleton<_i7.AuthRemoteDataSource>(
+      () => _i7.AuthSignUpRemoteDataSourceImpl(dio: gh<_i5.Dio>()));
+  gh.lazySingleton<_i8.HomeRepository>(() => _i9.HomeRepositoryImpl(
+      homeRemoteDatasource: gh<_i6.HomeRemoteDataSource>()));
+  gh.factory<_i10.GetCalendar>(
+      () => _i10.GetCalendar(homeRepository: gh<_i8.HomeRepository>()));
+  gh.factory<_i11.HomeBloc>(
+      () => _i11.HomeBloc(getCalendar: gh<_i10.GetCalendar>()));
+  gh.lazySingleton<_i12.AuthRepository>(() => _i13.AuthRepositoryImpl(
+      authRemoteDataSource: gh<_i7.AuthRemoteDataSource>()));
+  gh.factory<_i14.AuthSignUpUseCase>(
+      () => _i14.AuthSignUpUseCase(gh<_i12.AuthRepository>()));
+  gh.factory<_i15.OTPVerifyUseCase>(
+      () => _i15.OTPVerifyUseCase(gh<_i12.AuthRepository>()));
+  gh.factory<_i16.AuthBloc>(() => _i16.AuthBloc(
+        authSignUp: gh<_i14.AuthSignUpUseCase>(),
+        otpVerify: gh<_i15.OTPVerifyUseCase>(),
       ));
   return getIt;
 }
 
-class _$SecureStorageInjection extends _i18.SecureStorageInjection {}
+class _$SecureStorageInjection extends _i17.SecureStorageInjection {}
 
-class _$NetworkInfoInjection extends _i19.NetworkInfoInjection {}
-
-class _$DioBase extends _i20.DioBase {}
+class _$DioBase extends _i18.DioBase {}

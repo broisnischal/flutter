@@ -22,6 +22,7 @@ class ThrottlingBlocObserver extends BlocObserver {
   //   super.onEvent(bloc, event);
   //   log('testing');
   // }
+
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);

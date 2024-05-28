@@ -29,7 +29,13 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: TimerPageRoute.page,
         ),
-        AutoRoute(page: StepperPageRoute.page, initial: true),
+        AutoRoute(
+          page: StepperPageRoute.page,
+        ),
+        AutoRoute(
+          page: WebLoginRoute.page,
+        ),
+        AutoRoute(page: PaginationScreen.page, initial: true)
         // AutoRoute(
         //   page: SignUp.route,
         // ),

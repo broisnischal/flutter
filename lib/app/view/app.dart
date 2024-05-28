@@ -1,9 +1,12 @@
+import 'dart:developer';
+
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fullfluttersetup/l10n/l10n.dart';
-import 'package:fullfluttersetup/modules/observers/throttle_observer.dart';
 import 'package:fullfluttersetup/router/router.dart';
+import 'package:fullfluttersetup/router/router.gr.dart';
 
 // final navigatorKey s= GlobalKey<NavigatorState>();
 
@@ -11,6 +14,9 @@ class App extends StatelessWidget {
   App({super.key});
 
   final appRouter = AppRouter();
+
+  // static Future<bool> permission() async =>
+  //     await FlutterOverlayWindow.isPermissionGranted();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +36,20 @@ class App extends StatelessWidget {
           // ),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          routerConfig: appRouter.config(),
+          routerConfig: appRouter.config(
+            navigatorObservers: () => [AutoRouteObserver()],
+            deepLinkBuilder: (link) {
+              log(link.toString());
+              log('${link.path} ------ log');
+              if (link.path.contains('/reset')) {
+                log('testing');
+
+                return const DeepLink([TimerPageRoute()]);
+              } else {
+                return DeepLink.defaultPath;
+              }
+            },
+          ),
         );
       },
     );
